@@ -6,6 +6,9 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    /////////////
+    //candle add
+    //candle end
 }
 
 Widget::~Widget()
