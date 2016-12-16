@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>534</width>
+    <height>376</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>220</y>
+      <width>67</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="action_open"/>
+   <addaction name="action_open_2"/>
+   <addaction name="separator"/>
+   <addaction name="action_save"/>
+   <addaction name="action_saveAdd"/>
+   <addaction name="separator"/>
+   <addaction name="action_undo"/>
+   <addaction name="action_redo"/>
+   <addaction name="separator"/>
+   <addaction name="action_cut"/>
+   <addaction name="action_copy"/>
+   <addaction name="action_paste"/>
+   <addaction name="separator"/>
+   <addaction name="action_prive"/>
+   <addaction name="action_next"/>
+   <addaction name="separator"/>
+   <addaction name="action_exit"/>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>534</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>文件(&amp;F)</string>
+    </property>
+    <addaction name="action_open"/>
+    <addaction name="action_open_2"/>
+    <addaction name="separator"/>
+    <addaction name="action_save"/>
+    <addaction name="action_saveAdd"/>
+    <addaction name="separator"/>
+    <addaction name="action_print"/>
+    <addaction name="separator"/>
+    <addaction name="action_exit"/>
+   </widget>
+   <widget class="QMenu" name="menu_F">
+    <property name="title">
+     <string>搜索(&amp;S)</string>
+    </property>
+    <addaction name="action_search"/>
+    <addaction name="action_replace"/>
+   </widget>
+   <widget class="QMenu" name="menu_E">
+    <property name="title">
+     <string>编辑(&amp;E)</string>
+    </property>
+    <widget class="QMenu" name="menu_3">
+     <property name="title">
+      <string>字体大小</string>
+     </property>
+     <addaction name="action16"/>
+     <addaction name="action30"/>
+     <addaction name="action60"/>
+     <addaction name="action72"/>
+    </widget>
+    <widget class="QMenu" name="menu_4">
+     <property name="title">
+      <string>编码(&amp;O)</string>
+     </property>
+     <addaction name="actionGB18030"/>
+     <addaction name="actionUTF_8"/>
+    </widget>
+    <addaction name="action_undo"/>
+    <addaction name="action_redo"/>
+    <addaction name="separator"/>
+    <addaction name="action_cut"/>
+    <addaction name="action_copy"/>
+    <addaction name="action_paste"/>
+    <addaction name="separator"/>
+    <addaction name="action_del"/>
+    <addaction name="action_allSelect"/>
+    <addaction name="separator"/>
+    <addaction name="menu_4"/>
+    <addaction name="menu_3"/>
+    <addaction name="action_changeLine"/>
+   </widget>
+   <widget class="QMenu" name="menu_W">
+    <property name="title">
+     <string>窗口(&amp;W)</string>
+    </property>
+    <widget class="QMenu" name="menu_5">
+     <property name="title">
+      <string>改变背景</string>
+     </property>
+     <addaction name="action1"/>
+     <addaction name="action2"/>
+     <addaction name="action3"/>
+    </widget>
+    <addaction name="action_close"/>
+    <addaction name="action_closeAll"/>
+    <addaction name="separator"/>
+    <addaction name="action_pingpu"/>
+    <addaction name="action_cengdie"/>
+    <addaction name="separator"/>
+    <addaction name="action_prive"/>
+    <addaction name="action_next"/>
+    <addaction name="separator"/>
+    <addaction name="menu_5"/>
+   </widget>
+   <widget class="QMenu" name="menu_H">
+    <property name="title">
+     <string>帮助(&amp;H)</string>
+    </property>
+    <addaction name="action_about"/>
+    <addaction name="action_Qt"/>
+   </widget>
+   <addaction name="menu"/>
+   <addaction name="menu_F"/>
+   <addaction name="menu_E"/>
+   <addaction name="menu_W"/>
+   <addaction name="menu_H"/>
+  </widget>
+  <action name="action_open">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/new/prefix1/images1/new.png</normaloff>:/new/prefix1/images1/new.png</iconset>
+   </property>
+   <property name="text">
+    <string>新建文件(&amp;N)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="action_save">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/new/prefix1/images1/save.png</normaloff>:/new/prefix1/images1/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>保存(&amp;S)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="action_saveAdd">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/new/prefix1/images1/saveAs.png</normaloff>:/new/prefix1/images1/saveAs.png</iconset>
+   </property>
+   <property name="text">
+    <string>另存为(&amp;A)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="action_print">
+   <property name="text">
+    <string>打印(&amp;P)</string>
+   </property>
+  </action>
+  <action name="action_exit">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/new/prefix1/images1/exit.png</normaloff>:/new/prefix1/images1/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>退出(&amp;E)</string>
+   </property>
+   <property name="shortcut">
+    <string>Esc</string>
+   </property>
+  </action>
+  <action name="action_search">
+   <property name="text">
+    <string>查找(&amp;N)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
+   </property>
+  </action>
+  <action name="action_replace">
+   <property name="text">
+    <string>替换(&amp;R)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="action_undo">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/new/prefix1/images1/undo.png</normaloff>:/new/prefix1/images1/undo.png</iconset>
+   </property>
+   <property name="text">
+    <string>撤销(&amp;U)</string>
+   </property>
+  </action>
+  <action name="action_redo">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/new/prefix1/images1/redo.png</normaloff>:/new/prefix1/images1/redo.png</iconset>
+   </property>
+   <property name="text">
+    <string>恢复(&amp;R)</string>
+   </property>
+  </action>
+  <action name="action_cut">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/new/prefix1/images1/cut.png</normaloff>:/new/prefix1/images1/cut.png</iconset>
+   </property>
+   <property name="text">
+    <string>剪切(&amp;T)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="action_copy">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/new/prefix1/images1/copy.png</normaloff>:/new/prefix1/images1/copy.png</iconset>
+   </property>
+   <property name="text">
+    <string>复制(&amp;C)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+C</string>
+   </property>
+  </action>
+  <action name="action_paste">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/new/prefix1/images1/paste.png</normaloff>:/new/prefix1/images1/paste.png</iconset>
+   </property>
+   <property name="text">
+    <string>粘贴(&amp;P)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+V</string>
+   </property>
+  </action>
+  <action name="action_del">
+   <property name="text">
+    <string>删除(&amp;D)</string>
+   </property>
+  </action>
+  <action name="action_allSelect">
+   <property name="text">
+    <string>全选(&amp;S)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="action_changeLine">
+   <property name="text">
+    <string>自动换行</string>
+   </property>
+  </action>
+  <action name="action16">
+   <property name="text">
+    <string>16</string>
+   </property>
+  </action>
+  <action name="action30">
+   <property name="text">
+    <string>30</string>
+   </property>
+  </action>
+  <action name="action60">
+   <property name="text">
+    <string>60</string>
+   </property>
+  </action>
+  <action name="action72">
+   <property name="text">
+    <string>72</string>
+   </property>
+  </action>
+  <action name="actionGB18030">
+   <property name="text">
+    <string>GB18030</string>
+   </property>
+  </action>
+  <action name="actionUTF_8">
+   <property name="text">
+    <string>UTF-8</string>
+   </property>
+  </action>
+  <action name="action_close">
+   <property name="text">
+    <string>关闭(&amp;L)</string>
+   </property>
+  </action>
+  <action name="action_closeAll">
+   <property name="text">
+    <string>全部关闭(&amp;A)</string>
+   </property>
+  </action>
+  <action name="action_pingpu">
+   <property name="text">
+    <string>平铺(&amp;C)</string>
+   </property>
+  </action>
+  <action name="action_cengdie">
+   <property name="text">
+    <string>层叠(&amp;T)</string>
+   </property>
+  </action>
+  <action name="action_prive">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/new/prefix1/images1/previous.png</normaloff>:/new/prefix1/images1/previous.png</iconset>
+   </property>
+   <property name="text">
+    <string>上一个(&amp;P)</string>
+   </property>
+  </action>
+  <action name="action_next">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/new/prefix1/images1/next.png</normaloff>:/new/prefix1/images1/next.png</iconset>
+   </property>
+   <property name="text">
+    <string>下一个(&amp;N)</string>
+   </property>
+  </action>
+  <action name="action1">
+   <property name="text">
+    <string>1</string>
+   </property>
+  </action>
+  <action name="action2">
+   <property name="text">
+    <string>2</string>
+   </property>
+  </action>
+  <action name="action3">
+   <property name="text">
+    <string>3</string>
+   </property>
+  </action>
+  <action name="action_about">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/new/prefix1/images1/about.png</normaloff>:/new/prefix1/images1/about.png</iconset>
+   </property>
+   <property name="text">
+    <string>关于(&amp;A)</string>
+   </property>
+  </action>
+  <action name="action_Qt">
+   <property name="text">
+    <string>关于Qt(&amp;Q)</string>
+   </property>
+  </action>
+  <action name="action_open_2">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/new/prefix1/images1/open.png</normaloff>:/new/prefix1/images1/open.png</iconset>
+   </property>
+   <property name="text">
+    <string>打开文件(&amp;O)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
+ <connections/>
+</ui>

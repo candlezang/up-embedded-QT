@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>images1/about.png</file>
+        <file>images1/add.png</file>
+        <file>images1/copy.png</file>
+        <file>images1/cut.png</file>
+        <file>images1/exit.png</file>
+        <file>images1/new.png</file>
+        <file>images1/next.png</file>
+        <file>images1/open.png</file>
+        <file>images1/open2.png</file>
+        <file>images1/open3.png</file>
+        <file>images1/paste.png</file>
+        <file>images1/pause.png</file>
+        <file>images1/play.png</file>
+        <file>images1/previous.png</file>
+        <file>images1/redo.png</file>
+        <file>images1/save.png</file>
+        <file>images1/saveAs.png</file>
+        <file>images1/undo.png</file>
+    </qresource>
+</RCC>
