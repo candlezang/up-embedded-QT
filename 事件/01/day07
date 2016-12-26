@@ -1,0 +1,72 @@
+关于 parent this指针的用法:
+窗体与窗体之间, 不用this, 如果用了 this, 那么, 第二个窗体将在第一个窗体上显示
+
+窗体与对象之间,用this后, 当窗体关闭后,该资源也应该被释放.
+
+备注:中文输入法, shift有效果
+
+keyPressEvent //键盘按下事件
+	QLineEdit::keyPressEvent(event); //执行默认事件处理
+keyReleaseEvent //键盘弹上事件
+	
+event 所有的事件
+	event->type() == QEvent::KeyPress //判断事件的触发类型
+实现功能:
+	1.输入框重写 keyPressEvent, 主窗体也重写. 查看情况.
+	
+	2.只接收数字,不接收其他字符.
+	3.组合按键的使用(窗体放大,归位)
+	4.画线, 方向键盘控制按钮的位置
+	
+	
+eventFilter	
+	xxx-> //安装事件过滤器
+	QWidget::eventFilter(obj,event); //执行默认事件处理
+实现功能:
+	1.实现对多个输入框写值的功能(不用取消聚焦, 用事件筛选器实现)
+
+
+
+QCursor 设置鼠标光标样式
+	cursor.setShape
+
+setMouseTracking 设置鼠标跟踪
+	
+mousePressEvent 鼠标按下事件
+	LeftButton
+		// 使鼠标指针暂时变为小手抓取的样子
+        QCursor cursor;
+        cursor.setShape(Qt::ClosedHandCursor);
+        QApplication::setOverrideCursor(cursor);
+
+        // 获取指针位置和窗口位置的差值，以便移动时使用
+        offset = event->globalPos() - pos();
+        
+	RightButton
+		QCursor cursor(QPixmap("../yafeilinux.png"));
+        QApplication::setOverrideCursor(cursor);
+        
+mouseMoveEvent 鼠标移动事件
+		QPoint temp;
+        temp = event->globalPos() - offset;
+        move(temp);
+        
+mouseReleaseEvent 鼠标释放事件
+		QApplication::restoreOverrideCursor();
+		
+mouseDoubleClickEvent 鼠标双击事件
+	LeftButton
+		// 如果现在不是全屏，将窗口设置为全屏
+        if(windowState() != Qt::WindowFullScreen)
+            setWindowState(Qt::WindowFullScreen);
+        // 如果现在已经是全屏状态，那么恢复以前的大小
+        else setWindowState(Qt::WindowNoState);	
+        
+wheelEvent 滚轮事件
+	if(event->delta() > 0){
+	ui->textEdit->zoomIn();
+    }else{
+        ui->textEdit->zoomOut();
+    }
+
+拖动鼠标变 手握

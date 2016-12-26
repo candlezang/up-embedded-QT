@@ -1,0 +1,118 @@
+1.qt源码查看:
+	对qt creater工具,解决方案下面任意文件 "右键" --> "显示包含的目录"
+	
+2.手动编译qt
+	备注:qmake 在qt的安装目录下,如:/home/uplooking/Qt5.5.1/5.5/gcc_64/bin
+	a.生成解决方案
+		qmake -project
+	备注:生成解决方案后,记得在解决方案文件中加上 QT+=widgets 模块,否则编译不通过
+	b.生成Makefile
+		qmake -makefile
+	c.生成可执行程序
+		make
+3.对字符串的操作 (QString)
+a.数字转换成字符串:
+	QString	number(long n, int base = 10)
+	QString	number(double n, char format = 'g', int precision = 6)
+	QString	number(ulong n, int base = 10)
+	QString	number(int n, int base = 10)
+	QString	number(uint n, int base = 10)
+	QString	number(qlonglong n, int base = 10)
+	QString	number(qulonglong n, int base = 10)
+	QString::number(....);
+	
+b.任意类型转换成字符串(调用字符串的构造函数)
+	QString(const QChar * unicode, int size = -1)
+	QString(QChar ch)
+	QString(int size, QChar ch)
+	QString(QLatin1String str)
+	QString(const QString & other)
+	QString(QString && other)
+	QString(const char * str)
+	QString(const QByteArray & ba)
+
+c.字符串转换成任意类型:
+	QString对象.toXXX();
+	
+	QString	toCaseFolded() const
+	double	toDouble(bool * ok = 0) const
+	float	toFloat(bool * ok = 0) const
+	QString	toHtmlEscaped() const
+	int	toInt(bool * ok = 0, int base = 10) const
+	QByteArray	toLatin1() const
+	QByteArray	toLocal8Bit() const
+	long	toLong(bool * ok = 0, int base = 10) const
+	qlonglong	toLongLong(bool * ok = 0, int base = 10) const
+	QString	toLower() const
+	NSString *	toNSString() const
+	short	toShort(bool * ok = 0, int base = 10) const
+	std::string	toStdString() const
+	std::u16string	toStdU16String() const
+	std::u32string	toStdU32String() const
+	std::wstring	toStdWString() const
+	uint	toUInt(bool * ok = 0, int base = 10) const
+	ulong	toULong(bool * ok = 0, int base = 10) const
+	qulonglong	toULongLong(bool * ok = 0, int base = 10) const
+	ushort	toUShort(bool * ok = 0, int base = 10) const
+	QVector<uint>	toUcs4() const
+	QString	toUpper() const
+	QByteArray	toUtf8() const
+	int	toWCharArray(wchar_t * array) const
+	QString	trimmed() const
+	void	truncate(int position)
+	const QChar *	unicode() const
+	const ushort *	utf16() const
+
+
+d.字符串追加 (QString::append) 
+QString a;
+QString b;
+QString c;
+c = a + b; c行为
+c.append("xxxx");
+
+e.字符串拼接(  QString	arg)
+	int a=10; float b = 20.333f; double c=3434.323;
+	char *str = "hello world";
+	QString myStr = QString("a:%1 b:%2 c:%3 str:%4").arg(a)
+	.arg(b).arg(c).arg(str);
+
+f.从字符串末尾开始分割数据 (chop)
+string str = "12345";
+str.chop(2);      //str = "123"     
+ 
+g.清空当前字符串数据 (clear())
+QString str = "12345";
+str.clear(); //str="";
+
+h.字符串比较 (compare)
+
+i.大串中包含小串 (contains)
+
+j.统计字符串的数量 (count)
+
+k.往字符串中插入指定字符 (insert)
+
+l.判断字符串是否为空 (isEmpty)
+
+n.移除指定位子字符 (remove)
+
+m.替换指定位子 字符串 (replace)
+    QString str = "colour behaviour flavour neighbour";
+    str.replace(QString("ou"), QString("o")); 
+o.字符串分割 (split)
+	QString str = "hello world#我爱中国#ni hao";
+    QStringList list = str.split("#");
+    for(int i=0; i<list.count(); i++){
+        qDebug() << list.at(i) << endl;
+    }
+
+           
+4.对字符串数组的操作(QStringList)
+a.赋值
+	QStringList fonts;
+    fonts << "Arial" << "Helvetica" << "Times" << "Courier";
+b.获取某个元素
+	for (int i = 0; i < fonts.size(); ++i)
+	fonts[i]
+         cout << fonts.at(i).toLocal8Bit().constData() << endl;

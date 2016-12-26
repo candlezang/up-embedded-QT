@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>images/add.png</file>
+        <file>images/background.png</file>
+        <file>images/background2.png</file>
+        <file>images/Bear0.png</file>
+        <file>images/bomb.png</file>
+        <file>images/mob.png</file>
+        <file>images/next.png</file>
+        <file>images/open.png</file>
+        <file>images/open2.png</file>
+        <file>images/open3.png</file>
+        <file>images/pause.png</file>
+        <file>images/play.png</file>
+        <file>images/previous.png</file>
+        <file>images/silent.png</file>
+        <file>images/silent2.png</file>
+        <file>images/voice.png</file>
+    </qresource>
+</RCC>

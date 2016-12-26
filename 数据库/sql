@@ -1,0 +1,198 @@
+SQLite具有以下五种基本数据类型:
+	1、integer:带符号的整型(最多64位)。
+	2、real:8字节表示的浮点类型。
+	3、text:字符类型,支持多种编码(如UTF-8、
+	UTF-16),大小无限制。
+	4、blob:任意类型的数据,大小无限制。
+	5、null:表示空值。
+	6. date:日期类型
+	7. time:时间类型
+	8. datetime: 日期+时间
+
+	但实际上，sqlite3也接受如下的数据类型：
+	smallint 16 位元的整数。
+	interger 32 位元的整数。
+	decimal(p,s) p 精确值和 s 大小的十进位整数，精确值p是指全部有几个数(digits)大小值，s是指小数点後有几位数。如果没有特别指定，则系统会设为 p=5; s=0 。
+	float 32位元的实数。
+	double 64位元的实数。
+	char(n) n 长度的字串，n不能超过 254。
+	varchar(n) 长度不固定且其最大长度为 n 的字串，n不能超过 4000。
+	graphic(n) 和 char(n) 一样，不过其单位是两个字元 double-bytes， n不能超过127。这个形态是为了支援两个字元长度的字体，例如中文字。
+	vargraphic(n) 可变长度且其最大长度为 n 的双字元字串，n不能超过 2000
+	date 包含了 年份、月份、日期。
+	time 包含了 小时、分钟、秒。
+	timestamp 包含了 年、月、日、时、分、秒、千分之一秒。
+
+创建、打开数据库:
+	sqlite3 *.db (文件存在则打开, 文件不存则创建)
+
+对sqlite数据的操作基本命令:
+	退出数据库命令:
+		.quit 或 .exit
+	显示当前数据库的设置显示信息
+		.show
+	查看当前数据库保存信息
+		.databases
+	表头是否显示
+		.headers on|off 
+	显示当前数据表的信息
+		.tables
+	显示sql语句
+		.schema
+
+
+
+一.对表操作(增加表, 删除表, 修改表)
+1.增加表
+	格式:create table 表名(列名1 类型, 类名2 类型,.......);
+	CREATE TABLE person(name text, sex text, age int, addr text);
+	
+2.删除表
+	格式:drop table 表名;
+	drop table person2;
+	
+3.修改表字段
+	增加字段:
+	格式: alter table 表名 add column 新列名 类型;
+	alter table person add column remark text;
+	删除字段:
+	1.把想要的字段放到临时表中(创建临时表) 1=1:获取表结构+表数据  1=2:获取表结构
+	create table temp as select name, sex, age from human where 1=2;
+	2.删除旧表删除
+	drop table human;
+	3.把临时表名更改成旧表名
+	alter table temp rename to human;
+		
+4.修改表名
+	格式:alter table 旧表名 rename to 新表名;
+	alter table person rename to human;
+
+二.对表数据操作(增,删,该,查)
+1.增加数据 (当列值为字符串时要加上 '' 号)
+	全插:   CREATE TABLE "human"(name TEXT,sex TEXT,age INT);
+	格式:	insert into 表名 values(列1值, 列2值, 列3值, ....);
+	insert into human values('tth', 'male', 20);
+	insert into human values('ttf', null, 20);
+	insert into human values('xxx', 20);  //error
+	
+	指定插入列:
+	格式:	insert into 表名(name, age,....) values(列1值, 列2值,....);
+	insert into human(name, age) values('lly', 30);
+	
+2.查询数据
+	表中所有列,所有数据 (*:通配符, 代表所有列)
+	格式:	select * from 表名;
+	select * from human;
+	
+	查询指定列中数据 
+	格式:	select 列1, 列2 from 表名;
+	select name from human;
+
+	条件查询:
+	where条件单个:
+		where 列名1 操作符(=, <>, >, <, >=, <=) 列值1
+	where条件或:
+		where 列名1 操作符(=, <>, >, <, >=, <=) 列值1 or 列名2 操作符(=, <>, >, <, >=, <=) 列值2 .....
+	where条件与:
+		where 列名1 操作符(=, <>, >, <, >=, <=) 列值1 and 列名2 操作符(=, <>, >, <, >=, <=) 列值2 .....
+	
+3.修改表中的数据:
+	修改所有行:
+	格式:	update 表名 set 列名1=值1, ..... ;
+	update human set sex='male';
+	
+	修改指定行数据:
+	格式:	update 表名 set 列1=值1, ...... where 列n = 值n;
+	update human set sex = 'female' where name <> 'lly';
+	
+	where条件单个:
+		where 列名1 操作符(=, <>, >, <, >=, <=) 列值1
+	where条件或:
+		where 列名1 操作符(=, <>, >, <, >=, <=) 列值1 or 列名2 操作符(=, <>, >, <, >=, <=) 列值2 .....
+	where条件与:
+		where 列名1 操作符(=, <>, >, <, >=, <=) 列值1 and 列名2 操作符(=, <>, >, <, >=, <=) 列值2 .....
+	select * from human where sex='female' and age = 30;
+
+4.删除表中的数据:
+	删除所有行:
+	格式:	delete from 表名;
+	delete from human;
+	
+	删除指定行数据:
+	格式:	delete from 表名 where 列名1 = 列值, .....;
+
+	where条件单个:
+		where 列名1 操作符(=, <>, >, <, >=, <=) 列值1
+	where条件或:
+		where 列名1 操作符(=, <>, >, <, >=, <=) 列值1 or 列名2 操作符(=, <>, >, <, >=, <=) 列值2 .....
+	where条件与:
+		where 列名1 操作符(=, <>, >, <, >=, <=) 列值1 and 列名2 操作符(=, <>, >, <, >=, <=) 列值2 .....
+
+
+where条件提高:
+	一、in 操作符			格式:where 列名 in(值1, 值2);
+	二、and 操作符		格式:where 列名1 = 值1 and 列2=值2;
+	三、or 操作符			格式:where 列名1 = 值1 or 列2=值2;
+	四、between and 操作符		格式:where 列名1 between 值 and 值;
+	五、like 操作符				格式:列名1 like '%中国%';
+	六、not 操作符				格式:列名1 not like '%中国%'
+
+	
+主键: primary key
+	格式:create table 表名(列1 int primary key, 列2 text, .....);
+	create table person(id int primary key, name text, sex text, int age);
+
+不允许表字段为空: not null
+	格式:create table 表名(列1 not null, 列2 not null,.....);
+	create table person2(id int primary key, name text not null, sex text not null);
+
+去除列中数据的重复: distinct
+	格式:select distinct 列1 from 表名;
+	select distinct DEPART from teacher;
+
+排序: 用于查询结果的排序
+	升序: asc
+	格式: order by 列名 asc;
+	select * from student order by SBIRTHDAY asc;
+	降序: desc
+	格式: order by 列名 desc;
+	select * from student order by SBIRTHDAY desc;
+	
+常用的聚集函数
+	avg() 返回某列的平均值
+	count() 返回某列的行数
+	max() 返回某列的最大值
+	min() 返回某列的最小值
+	sum() 返回某列值之和
+	格式:select avg(列名) as平均XX from 表名;
+
+查询数据分组: group by 列名  
+	select count(SNO) as 数量, CNO from score group by CNO;
+查询后,数据再次筛选: group by 列名 having 聚集函数 (> = < ...) 值n
+	select count(SNO) as PNumber, CNO from score group by CNO having PNumber >= 5;
+	
+	
+	
+	
+多表连接知识详解:	http://cache.baiducontent.com/c?m=9d78d513d98202f14fede5697d12c0111b4381132ba7d30208a28449e3732a42501592ac57540772d2d13b275fa0131aacb22173441e3df2de8d9f4aaaedc57e78d97875671cf1104f8c04f6971b609f77c60fbeb24fb4fca32593d882809e034e8b105b6d8086ca0d40509d2fed1433e0a6844a105d1ba7ed3a60ff4e775ec5651fe8&p=8a74cb1786cc41ac52b3c7710f599d&newp=9a65ce15d9c342a534bac7710f5c91231610db2151d1da01298ffe0cc4241a1a1a3aecbf26241002d4c279660baa4d5feaf33270350034f1f689df08d2ecce7e43df&user=baidu&fm=sc&query=sql+%B6%E0%B1%ED%C1%AC%BD%D3&qid=83ba21d900000733&p1=1
+
+多表连接:
+	左连接: left join
+	select student.sname, score.degree from student left join score on student.sno = score.sno;
+	右连接: rigth join (暂不支持)
+	select student.sname, score.degree from student right join score on student.sno = score.sno;
+	全连接: full join (暂不支持)
+	select student.sname, score.degree from student full join score on student.sno = score.sno;
+	
+	内连接:
+	select student.sname, score.degree from student inner join score on student.sno=score.sno;
+	等价于:
+	select student.sname, score.degree from student,score where student.sno=score.sno;
+
+起别名:as  可以给表起别名,也可以给列起别名
+	
+	select s1.*, s2.* from student as s1, score as s2 where s1.SNO = s2.SNO;
+
+验证1=2 和 1=1
+	create table temp3 as select s1.*, s2.* from student as s1, score as s2 where s1.SNO = s2.SNO and 1=1;
+	create table temp3 as select s1.*, s2.* from student as s1, score as s2 where s1.SNO = s2.SNO and 1=2;
